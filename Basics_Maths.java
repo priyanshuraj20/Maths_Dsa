@@ -32,12 +32,22 @@ public class Basics_Maths{
             }//you can use list add all element sort and than print for correct sequence
         }
     }
-    //check for prime: Number which has exactly two factors i.e: 1 and number itself
-    
+    //check for prime: Number which has exactly two factors i.e: 1 and number itself   (sqrt method)
+     private static boolean isPrime(int n){
+        int count =0;
+        for(int i = 1; i * i < n; i++){
+            if(n%i == 0){
+                count++;
+                if(n/i != i) count++;
+            }
+        }
+        return count==2? true:false;
+     }
 
     public static void main(String[] args){
         extraction(5999 );
         System.out.println(Armstrong(351));
         divisors(45);
+        isPrime(23);
     }
 }
