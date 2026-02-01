@@ -43,11 +43,32 @@ public class Basics_Maths{
         }
         return count==2? true:false;
      }
-
+     //GCD\\HCF: O(min(a,b))
+     private static void gcd1(int a,int b){
+        for(int i = Math.min(a,b); i > 0; i++){
+        if(a % i==0 && b % i ==0){
+            System.out.print(i);
+            break;
+        }
+        }
+     }
+     //gcd : using euclidean algo.: greater%smaller->go till one of the zero than other is gcd T.C->> O(log fie(min(a,b)));
+     private static int gcd2(int a, int b){
+        while(a>0 && b >0){
+            if(a>b){
+                a = a % b;
+            }else{
+                b = b % a;
+            }
+        }
+        return a==0? b:a;
+     }
     public static void main(String[] args){
         extraction(5999 );
         System.out.println(Armstrong(351));
         divisors(45);
         isPrime(23);
+        gcd1(12,20);
+        gcd2(5, 8);
     }
 }
