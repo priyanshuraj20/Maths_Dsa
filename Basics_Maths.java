@@ -1,3 +1,4 @@
+import java.util.*;
 public class Basics_Maths{
 
     //extraction of digits: Tc : O(log 10 (N)) 
@@ -63,6 +64,40 @@ public class Basics_Maths{
         }
         return a==0? b:a;
      }
+     //print prime factors of a number: a number which is divisor and prime among them :  Tc:it will approximate as inside primecheck is not always = approx O(root n * 2 * root)
+     private static void printPrime(int n){
+        List<Integer> list = new ArrayList<>();
+        for(int i = 1; i <= Math.sqrt(n); i++){
+            if(n%i == 0){
+                if(isPrime(i)){
+                    list.add(i);
+                }
+                if(n/i != i) {
+                    if(isPrime(n/i)){
+                    list.add(n/i);
+                    }
+                }
+            }
+        }
+     }
+     //Given number is power of two or not :  using count of setbits :if count of setbit == 1 than it is a power of 2 else not    
+     private static boolean isPowOF2(int n){   // TC: O(log n ) 
+          if (n <= 0)
+            return false;
+        int count =0;
+        while(n > 0){
+            if((n&1) == 1){
+                count++;
+            }
+            n = n>>1;
+        }
+        if(count == 1) return true;
+        return false;
+     } 
+     //using AND operator : TC O(1);
+     private static boolean isPower2(int n){
+           return (n > 0) && ((n & (n - 1)) == 0);
+     }
     public static void main(String[] args){
         extraction(5999 );
         System.out.println(Armstrong(351));
@@ -70,5 +105,7 @@ public class Basics_Maths{
         isPrime(23);
         gcd1(12,20);
         gcd2(5, 8);
+        isPowOF2(8);
+        isPower2(16);
     }
 }
